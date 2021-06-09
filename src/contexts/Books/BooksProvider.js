@@ -8,6 +8,7 @@ const BooksProvider = ({ children }) => {
   const [queryResponse, setQueryResponse] = useState();
   const [searchQuery, setSearchQuery] = useState('');
   const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!queryResponse) return;
@@ -21,11 +22,12 @@ const BooksProvider = ({ children }) => {
 
         return booksResponse;
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
 
     new Promise((resolve, reject) => {
+      setLoading(true);
       queryResponse.forEach((v, index, array) => {
         if (v?.isbn) {
           getBook(v?.isbn[0]).then((v) => {
@@ -36,10 +38,9 @@ const BooksProvider = ({ children }) => {
         }
       });
     }).then(() => {
-      console.log('done query', booksArray.length);
-
       if (booksArray.length > 0) {
         setBooks(booksArray);
+        setLoading(false);
       }
     });
   }, [queryResponse]);
@@ -53,7 +54,9 @@ const BooksProvider = ({ children }) => {
   }, [searchQuery]);
 
   return (
-    <BooksContext.Provider value={{ books, setSearchQuery }}>{children}</BooksContext.Provider>
+    <BooksContext.Provider value={{ books, setSearchQuery, loading }}>
+      {children}
+    </BooksContext.Provider>
   );
 };
 
