@@ -1,35 +1,50 @@
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import BooksContext from './BooksContext';
 
+const corsAnywhere = 'https://cors-anywhere-nirav.herokuapp.com/';
+
 export default function BooksProvider({ children }) {
-  //   const { fetchData } = useAxios('/search.json?q=Gatsby');
-  //   const { fetchData } = useAxios();
-  //   const { fetchData } = useAxios();
+  const [books, setBooks] = useState([]);
+  const [queryResponse, setQueryResponse] = useState();
+  const [searchQuery, setSearchQuery] = useState('');
 
   const getBook = async (isbn) => {
-    // let book = await fetchData(`/api/volumes/brief/isbn/${isbn}.json`);
     try {
-      const book = await axios.get(
-        'http://openlibrary.org/api/volumes/brief/isbn/9781741757309.json',
+      const booksResponse = await axios.get(
+        `${corsAnywhere}http://openlibrary.org/api/volumes/brief/isbn/${isbn}.json`,
       );
-      console.log(book);
+
+      return booksResponse;
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    getBook('9781741757309');
-  }, []);
+    if (!queryResponse) return;
+    let booksArray = [];
 
-  //   useEffect(() => {
-  //     response?.docs.forEach((v) => {
-  //       if (v?.isbn) {
-  //         getBook(v?.isbn[0]);
-  //       }
-  //     });
-  //   }, [response]);
+    queryResponse.forEach((v) => {
+      if (v?.isbn) {
+        getBook(v?.isbn[0]).then((v) => {
+          let newValue = Object.assign({}, v.data.records);
+          booksArray.push(newValue);
+        });
+      }
+      setBooks(booksArray);
+    });
+  }, [queryResponse]);
 
-  return <BooksContext.Provider value={{}}>{children}</BooksContext.Provider>;
+  useEffect(() => {
+    if (!searchQuery) return;
+
+    axios.get(`http://openlibrary.org/search.json?q=${searchQuery}`).then((response) => {
+      setQueryResponse(response?.data?.docs);
+    });
+  }, [searchQuery]);
+
+  return (
+    <BooksContext.Provider value={{ books, setSearchQuery }}>{children}</BooksContext.Provider>
+  );
 }

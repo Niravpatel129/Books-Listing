@@ -1,0 +1,24 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  height: 100%;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f2eff3;
+  height: 100%;
+}
+
+input:focus {
+  outline: none;
+}
