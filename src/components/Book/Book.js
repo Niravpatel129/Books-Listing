@@ -1,28 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
+import './Book.scss';
 
 export default function Book({ book }) {
-  const [listExpanded, setListExpanded] = useState(false);
-
   const { title, cover, authors, publishDate } = book;
 
   return (
     <div className="Book">
-      <div className="expandIcon expand-btn" onClick={() => setListExpanded(!listExpanded)}>
-        {listExpanded ? '-' : '+'}
-      </div>
       <div className="imageContainer">
-        <img src={cover} alt="student" />
+        <img
+          src={
+            cover ||
+            'https://d827xgdhgqbnd.cloudfront.net/wp-content/uploads/2016/04/09121712/book-cover-placeholder.png'
+          }
+          alt="book cover"
+        />
       </div>
       <div>
         <div className="field firstName">{title}</div>
-        <div className="field">Email: {title}</div>
-        <div className="field">Company: {title}</div>
-        <div className="field">Skill: {title}</div>
-
-        <div
-          className="expandedList"
-          style={{ height: listExpanded ? 'auto' : 0, overflow: listExpanded ? 'auto' : 'hidden' }}
-        ></div>
+        <div className="field">Author: {authors}</div>
+        <div className="field">publish date: {publishDate}</div>
       </div>
     </div>
   );

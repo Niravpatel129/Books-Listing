@@ -19,16 +19,15 @@
   .imageContainer {
     margin: 0px 30px;
     border: 1px solid lightgray;
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
 
     img {
-      width: 100%;
+      width: 130px;
+      height: 180px;
     }
   }
 

@@ -43,8 +43,8 @@ export default function BookList() {
         id="name-input"
         placeholder="Search by name"
       />
-      <pre>{JSON.stringify(books)}</pre>
-      {/* {renderBooks()} */}
+      {/* <pre>{JSON.stringify(books)}</pre> */}
+      {renderBooks()}
     </div>
   );
 }
