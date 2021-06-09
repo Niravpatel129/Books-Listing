@@ -16,7 +16,7 @@ export default function Book({ book }) {
         />
       </div>
       <div>
-        <div className="field firstName">{title}</div>
+        <h1 className="field firstName">{title}</h1>
         <div className="field">Author: {authors}</div>
         <div className="field">publish date: {publishDate}</div>
       </div>
