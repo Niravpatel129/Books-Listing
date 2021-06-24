@@ -1,12 +1,12 @@
 How long did you spend on the coding assignment?  
-Approx 3-4 hours, 1 hour or so was spend debugging / setting up a cors middleware server on heroku as the API did not allow proper endpoints.
+- Approx 3-4 hours, 1 hour or so was spend debugging / setting up a cors middleware server on heroku as the API did not allow proper endpoints.
 
 a. What would you add to your solution if you had more time? 
-I would add tests, improved filtering and improve the UI/UX by spending some time on figma or sketch.
+- I would add tests, improved filtering and improve the UI/UX by spending some time on figma or sketch.
 
 2. What was the most useful feature that was added to the latest version of your chosen
    language? Please include a snippet of code that shows how you&#39;ve used it. 
-   Not the "latest" but I've been using custom hooks quite alot and in the past I've setup custom hooks for api end points and parsing data.
+   - Not the "latest" but I've been using custom hooks quite alot and in the past I've setup custom hooks for api end points and parsing data.
 
 Code example
 
