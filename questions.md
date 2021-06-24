@@ -28,7 +28,7 @@ function useWindowDimensions() {
 }
 
 export default useWindowDimensions;
-``
+```
 
 3. How would you track down a performance issue in production? Have you ever had to do
 this? 
