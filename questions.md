@@ -32,9 +32,9 @@ export default useWindowDimensions;
 
 3. How would you track down a performance issue in production? Have you ever had to do
 this? 
-I've had to track performance issues quite often coming from a mobile developer where performance and optimizations matter quite often, using the chrome extension react dev tools, it can really show where things are unnecessarily re-rendering.
+- I've had to track performance issues quite often coming from a mobile developer where performance and optimizations matter quite often, using the chrome extension react dev tools, it can really show where things are unnecessarily re-rendering.
 4. How would you improve the API that you just used? 
-The endpoints for getting an individual book is blocked by cors error, the structure of there data is a mess as well and could use refactoring.
+- The endpoints for getting an individual book is blocked by cors error, the structure of there data is a mess as well and could use refactoring.
 5. Please describe yourself using correctly formatted JSON.
 
 ```
